@@ -25,7 +25,7 @@ function setGeocoder (){
 function addGeocoderToMap(geocoder){
     map.addControl(geocoder);
     geocoder.on('result', function (event){
-        console.log(event)
+
         setMarker(event.result.geometry.coordinates);
         marker.setPopup(displayPopup(event.result.place_name));
 
