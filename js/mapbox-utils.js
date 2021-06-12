@@ -1,4 +1,4 @@
-mapboxgl.accessToken = token;
+mapboxgl.accessToken = MAPBOX_TOKEN;
 
 let map = new mapboxgl.Map({
     container: 'map',
@@ -7,55 +7,46 @@ let map = new mapboxgl.Map({
     zoom: 12
 });
 
-let marker = setMarker([-98.4936, 29.4241]);
+let marker;
 
-
-addMapEvent(marker);
-
-
+mapEvent();
 
 let geocoder = setGeocoder();
-addGeocoderToMap(geocoder)
-addGeocoderEvent(geocoder)
-setPopup("this is my text")
+addGeocoderToMap(geocoder);
 
-
-function setGeocoder() {
+function setGeocoder (){
     return new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
         marker: false
-    })
-}
-
-function addGeocoderToMap(geocoder) {
-    map.addControl(geocoder);
-}
-
-
-function addGeocoderEvent(geocoder){
-    geocoder.on('result', function (e){
-        marker.setLngLat(e.result.geometry.coordinates)
-
-        setPopup(e.result.geometry.name)
-    })
-}
-
-
-function setMarker(point) {
-    return new mapboxgl.Marker().setLngLat(point)
-        .addTo(map);
-}
-function addMapEvent(marker) {
-    map.on('click', function (e) {
-        marker.setLngLat(e.lngLat)
-            .addTo(map);
     });
 }
 
-function setPopup(textDetails){
-    let popup = new mapboxgl.Popup().setHTML(`<p>${textDetails}</p>`)
-        .addTo(map);
-    marker.setPopup(popup);
+function addGeocoderToMap(geocoder){
+    map.addControl(geocoder);
+    geocoder.on('result', function (event){
+        console.log(event)
+        setMarker(event.result.geometry.coordinates);
+        marker.setPopup(displayPopup(event.result.place_name));
+
+        fetchForeCast(event.result.geometry.coordinates);
+    });
 }
 
+function setMarker(point) {
+    if(!marker) {
+        marker = new mapboxgl.Marker().setLngLat(point).addTo(map)
+    }else{
+        marker.setLngLat(point);
+    }
+}
+
+function mapEvent(){
+    map.on('click', function (event){
+        setMarker(event.lngLat)
+    });
+}
+
+function displayPopup(textDetails){
+    return new mapboxgl.Popup().setHTML(`<p>${textDetails}</p>`).addTo(map);
+}
