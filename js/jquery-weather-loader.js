@@ -23,9 +23,9 @@ function buildDOMObjects(forecastData,location) {
 
 
         $('#forecast').append(`
-<div class="card" style=“width: 18rem“>
+<div class="card col-2 mx-3" style=“width: 18rem“>
         <div class="card-body">
-            <h5 class="card-title">${city}</h5>
+            <h5 class="card-title text-center" style="background-color: lightblue">${city}</h5>
             <br>
             ${formattedTime}
             <p class="card-text"> Temp outside is ${temp}
@@ -38,7 +38,7 @@ function buildDOMObjects(forecastData,location) {
             <br>
             Low temp: ${low}
             </p>
-        </div>
+       </div>
 </div> `)
     }
 }
