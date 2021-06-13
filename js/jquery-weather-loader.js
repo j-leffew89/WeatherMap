@@ -1,5 +1,5 @@
 function buildDOMObjects(forecastData) {
-
+    $('#forecast').empty()
     console.log(forecastData);
 
     for (let i = 0; i < forecastData.length; i++) {
@@ -47,6 +47,4 @@ function buildDOMObjects(forecastData) {
         </div>
 </div> `)
     }
-
-
 }
