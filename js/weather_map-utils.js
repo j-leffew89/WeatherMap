@@ -10,9 +10,9 @@ let fetchForeCast = function (coordinates) {
             units: "imperial"
         },
         success: function (data){
-            console.log(data)
+            console.log(data);
 
-            buildDOMObjects(filterWeatherObjects(data));
+            buildDOMObjects(filterWeatherObjects(data), filterLocation(data));
         },
 
     });
@@ -25,5 +25,10 @@ function filterWeatherObjects(data){
             arr.push(data.list[i]);
         }
     }
+
     return arr;
+}
+
+function filterLocation(data){
+    return data.city
 }
