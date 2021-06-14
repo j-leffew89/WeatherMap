@@ -17,6 +17,21 @@ let fetchForeCast = function (coordinates) {
 
     });
 }
+//
+// $(document).ready(function(event) {
+//     $.ajax({
+//         url: "http://api.openweathermap.org/data/2.5/forecast",
+//         data: {
+//             APPID: OPEN_WEATHERMAP_TOKEN,
+//             q: "Racine, USA",
+//             units: "imperial"
+//         },
+//
+//         success: function (data){
+//             buildDOMObjects(filterWeatherObjects(data), filterLocation(data))
+//         }
+//     });
+// });
 
 function filterWeatherObjects(data){
     let arr = [];

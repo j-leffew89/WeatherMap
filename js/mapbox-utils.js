@@ -2,7 +2,7 @@ mapboxgl.accessToken = MAPBOX_TOKEN;
 
 let map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/dark-v10',
+    style: 'mapbox://styles/jsosa89/ckpwsade94s9117n3cghtmvof',
     center: [-87.7829, 42.7261],
     zoom: 12
 });
@@ -21,6 +21,11 @@ function setGeocoder() {
         marker: false
     });
 }
+// let geocoder = new MapboxGeocoder({
+//     accessToken: mapboxgl.accessToken,
+//     mapboxgl: mapboxgl
+// });
+// document.getElementById('search').appendChild(geocoder.onAdd(map));
 
 function addGeocoderToMap(geocoder) {
     map.addControl(geocoder);

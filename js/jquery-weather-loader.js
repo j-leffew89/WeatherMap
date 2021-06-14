@@ -23,22 +23,25 @@ function buildDOMObjects(forecastData,location) {
 
 
         $('#forecast').append(`
-<div class="card col-2 mx-3" style=“width: 18rem“>
+<div class="card col-2 mx-3" style='width: 18rem'>
         <div class="card-body">
             <h5 class="card-title text-center" style="background-color: lightblue">${city}</h5>
-            <br>
+            <hr>
             ${formattedTime}
+            <hr>
             <p class="card-text"> Temp outside is ${temp}
-            <br>
+            <hr>
             ${des}
-            <br>
+            <hr>
             It feels like ${feels}
-            <br>
+            <hr>
             High temp: ${max}
-            <br>
+            <hr>
             Low temp: ${low}
             </p>
        </div>
 </div> `)
     }
 }
+
+// $('#bar').css('visibility', 'hidden');
